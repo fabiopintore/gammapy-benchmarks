@@ -21,8 +21,6 @@ from gammapy.irf import load_cta_irfs
 from gammapy.modeling import Fit
 from gammapy.modeling.models import (
     PointSpatialModel,
-    GaussianSpatialModel,
-    PowerLawSpectralModel,
     SkyModel,
     SkyModels,
 )
@@ -32,6 +30,7 @@ log = logging.getLogger(__name__)
 
 AVAILABLE_MODELS = ["point-pwl", "point-ecpow", "point-logparabola",
                     "point-pwltwo", "point-ecpow3fgl", "point-excpow4fgl",
+                    "point-compoundmod",
                     "disk-pwl", "gauss-pwl"]
 DPI = 300
 
@@ -40,7 +39,7 @@ IRF_FILE = "$GAMMAPY_DATA/cta-1dc/caldb/data/cta/1dc/bcf/South_z20_50h/irf_file.
 POINTING = SkyCoord(0.0, 0.0, frame="galactic", unit="deg")
 LIVETIME = 10 * u.hr
 GTI_TABLE = GTI.create(start=0 * u.s, stop=LIVETIME.to(u.s))
-OBS_ID = '{:04d}'.format(14)
+OBS_ID = '{:04d}'.format(1)
 
 # dataset config
 ENERGY_AXIS = MapAxis.from_energy_bounds("0.1 TeV", "100 TeV", nbin=30)
